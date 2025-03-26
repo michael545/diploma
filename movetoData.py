@@ -10,11 +10,12 @@ os.makedirs(destination_dir, exist_ok=True)
 
 for file in os.listdir(source_dir):
     if file.endswith(".csv"):
-        source_path = os.path.join(source_dir, file)
+        source = os.path.join(source_dir, file)
         destination_path = os.path.join(destination_dir, file)
-        
-        # Move file
-        shutil.move(source_path, destination_path)
+
+        shutil.move(source, destination_path)
         print(f"Moved {file} to {destination_dir}")
 
 print("all ok, moved")
+
+
