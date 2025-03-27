@@ -1,10 +1,6 @@
-
-asttokens==3.0.0
-beautifulsoup4==4.13.3
 matplotlib==3.10.1
 numpy==2.2.3
 pandas==2.2.3
-peewee==3.17.9
-Pillow==11.1.0
 requests==2.32.3
 yfinance==0.2.55
+seaborn==0.13.2

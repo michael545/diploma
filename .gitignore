@@ -1,6 +1,7 @@
 .ipynb_checkpoints/
 .env/
 myenv/
+myenv-3-10/
 *.ipynb~
 .DS_Store
 Thumbs.db
@@ -32,3 +33,4 @@ node_modules/
 *.sqlite3
 *.lock
 *.pid
+*.python-version
