@@ -39,19 +39,18 @@ Ta projekt primerja dva napredna modela za napovedovanje časovnih vrst – Amaz
 
 ## Navodila za uporabo
 
-
 ## Ključne ugotovitve
 
-- Model TimesFM je v povprečju natančnejši (nižji MAPE) in bolj stabilen kot Chronos.
-- Najboljše rezultate dosegata oba modela na 1-urnem intervalu.
-- Največje napake in volatilnost so pri napovedih na 5-minutnem intervalu.
-- Smerna točnost je za oba modela podobna in presega naključno napovedovanje.
+- Model Chronos je v povprečju natančnejši (nižji MAPE) in bolj stabilen kot Chronos.
+- Najboljše rezultate dosegata oba modela na 5m in 15m intervalu.
+- Največje napake in volatilnost so pri napovedih na 1h intervalu.
+- Direkcionalna točnost je za oba modela podobna in presega naključno napovedovanje.
 
 ## Priporočila
 
-- Za splošno uporabo priporočamo TimesFM na 1-urnem intervalu.
+- Za splošno uporabo priporočamo TimesFM na 5m-15m intervalu.
 - Za visoko-frekvenčno trgovanje so potrebne dodatne izboljšave modelov.
-- Razmislite o uporabi ansambla ali prilagodljivih intervalov za boljše rezultate.
+
 ---
 
 
