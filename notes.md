@@ -4,8 +4,6 @@
 - Currently the plots are merged to account for overnight gaps (8pm to 4am) mby include blank spaces for time when stocks don't trade but best for the models is to have the data be continous.
 - No linear interpolation during these gaps.
 
-### Analysis Script
-- Create a script to compare the Mean Absolute Error (MAE) and Mean Squared Error (MSE) for 15-minute, 5-minute, and 1-hour intervals.
 
 ###  Analysis of  the analysis: KEY FINDINGS
 
