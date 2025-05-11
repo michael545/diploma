@@ -1,4 +1,4 @@
-# DIPLOMSKA NALOGA: Napovedovanje cen delnic z modeli Chronos in TimesFM
+# DIPLOMSKA NALOGA: Napovedovanje gibanja finančnih trgov z modeli Chronos in TimesFM
 
 ## Opis projekta
 
@@ -34,22 +34,11 @@ Ta projekt primerja dva napredna modela za napovedovanje časovnih vrst – Amaz
 ## Analiza in vizualizacija
 
 - Izračunani so bili ključni metrični kazalniki: MAPE, MAE, RMSE, volatilnost napake, smerna pravilnost-natančnost.
-- Rezultati so vizualizirani v obliki histogramov, boxplotov in stolpčnih diagramov.
+- Rezultati so vizualizirani v obliki histogramov, boxplotov, distribucij, in stolpčnih diagramov.
 - Statistični testi (t-test) za preverjanje pomembnosti razlik med modeli.
 
 ## Navodila za uporabo
 
-1. Namestite odvisnosti:
-   ```
-   pip install -r requirements.txt
-   ```
-2. Pridobite podatke z zagonom ustreznega Jupyter zvezka v `notebooks/Data_acquistion.ipynb`.
-3. Zaženite napovedi z modeli v zvezkih `notebooks/chronos_*.ipynb` in `notebooks/timesFM_*.ipynb`.
-4. Analizirajte rezultate z zagonom skripte:
-   ```
-   python src/analyze_results.py
-   ```
-5. Preglejte vizualizacije in ugotovitve v mapi `analysis_results/` in datoteki `notes.md`.
 
 ## Ključne ugotovitve
 
@@ -63,7 +52,6 @@ Ta projekt primerja dva napredna modela za napovedovanje časovnih vrst – Amaz
 - Za splošno uporabo priporočamo TimesFM na 1-urnem intervalu.
 - Za visoko-frekvenčno trgovanje so potrebne dodatne izboljšave modelov.
 - Razmislite o uporabi ansambla ali prilagodljivih intervalov za boljše rezultate.
-
 ---
 
-Za dodatna vprašanja ali pomoč pri uporabi projekta se obrnite na avtorja.
+
