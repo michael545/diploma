@@ -16,7 +16,7 @@ def organize_csv_by_frequency(base_directory, frequencies):
                     shutil.move(src_file, dest_file)
                     break
 
-    print("finished, organized by freq.")
+    print("finished, now organized by freq.")
 
 base_dir = "data"
 frequency_types = ["1H", "5M", "15M"]  

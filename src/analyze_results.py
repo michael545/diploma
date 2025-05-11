@@ -1,13 +1,20 @@
 import os
+import shutil
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
-from scipy.stats import ttest_ind  # Changed from ttest_rel to ttest_ind
+from scipy.stats import ttest_ind
 
-# Define directories
-results_dir = '../results'  # Assuming src is the current directory
+
+results_dir = '../results'
 figures_dir = '../analysis_results'
+
+# Clean up existing analysis results
+if os.path.exists(figures_dir):
+    shutil.rmtree(figures_dir)
+
+# Create fresh directory
 os.makedirs(figures_dir, exist_ok=True)
 
 # Function to get all CSV files
@@ -26,7 +33,7 @@ def extract_info(csv_path):
     if len(parts) == 3:
         model, interval, ticker = parts
         filename = os.path.basename(csv_path)
-        window = filename.split('_')[2].split('.')[0]  # e.g., 'window_1.csv' -> '1'
+        window = filename.split('_')[2].split('.')[0]
         return model, interval, ticker, int(window)
     return None, None, None, None
 
@@ -42,10 +49,25 @@ for csv_path in all_csv:
     if model not in ['chronos', 'timesfm']:
         continue
     df = pd.read_csv(csv_path)
+    
+    # Calculate basic error metrics
     errors = df['actual'] - df['forecast']
     mae = np.mean(np.abs(errors))
     rmse = np.sqrt(np.mean(errors**2))
     mape = np.mean(np.abs(errors / df['actual'])) * 100 if (df['actual'] != 0).all() else np.nan
+    
+    # Calculate error volatility
+    error_volatility = np.std(errors)
+    
+    # Calculate directional accuracy
+    df['actual_change'] = df['actual'].diff()
+    df['predicted_change'] = df['forecast'] - df['actual'].shift(1)
+    
+    correct_direction = ((df['actual_change'] > 0) & (df['predicted_change'] > 0)) | \
+                       ((df['actual_change'] < 0) & (df['predicted_change'] < 0))
+    
+    directional_accuracy = np.mean(correct_direction[1:]) * 100
+    
     metrics_list.append({
         'model': model,
         'interval': interval,
@@ -53,20 +75,26 @@ for csv_path in all_csv:
         'window': window,
         'MAE': mae,
         'RMSE': rmse,
-        'MAPE': mape
+        'MAPE': mape,
+        'error_volatility': error_volatility,
+        'directional_accuracy': directional_accuracy
     })
 
 metrics_df = pd.DataFrame(metrics_list)
 
 # Function to create histograms for metrics
 def create_metric_histogram(data, metric, save_dir):
-    """Create histograms for a given metric across models and intervals"""
     plt.figure(figsize=(15, 10))
     
     for idx, (name, group) in enumerate(data.groupby(['model', 'interval'])):
         model, interval = name
         plt.subplot(2, 3, idx + 1)
         sns.histplot(data=group, x=metric, kde=True)
+        # Remove the median line by setting spines color to none
+        plt.gca().spines['bottom'].set_color('lightgray')
+        plt.gca().spines['left'].set_color('lightgray')
+        plt.gca().spines['top'].set_color('none')
+        plt.gca().spines['right'].set_color('none')
         plt.title(f'{model.capitalize()} - {interval}\n{metric} Distribution')
         plt.xlabel(metric)
         plt.ylabel('Count')
@@ -79,206 +107,86 @@ def create_metric_histogram(data, metric, save_dir):
 histograms_dir = os.path.join(figures_dir, 'histograms')
 os.makedirs(histograms_dir, exist_ok=True)
 
-# Generate histograms for each metric
-for metric in ['MAE', 'RMSE', 'MAPE']:
-    create_metric_histogram(metrics_df, metric, histograms_dir)
+# Generate histograms for MAPE only
+create_metric_histogram(metrics_df, 'MAPE', histograms_dir)
 
-# Create combined distribution plots
-plt.figure(figsize=(15, 5))
-for idx, metric in enumerate(['MAE', 'RMSE', 'MAPE']):
-    plt.subplot(1, 3, idx + 1)
-    sns.boxplot(data=metrics_df, x='interval', y=metric, hue='model')
-    plt.title(f'{metric} by Model and Interval')
-    plt.xticks(rotation=45)
-    
+# Create combined distribution plot for MAPE only
+plt.figure(figsize=(10, 5))
+sns.boxplot(data=metrics_df, x='interval', y='MAPE', hue='model',
+            whiskerprops=dict(color="lightgray"),  # Keep whisker lines
+            medianprops=dict(color="none"),  # Remove median line
+            boxprops=dict(alpha=0.5),  # Make boxes slightly transparent
+            capprops=dict(color="none"),  # Remove cap lines
+            showfliers=False)  # Remove outlier points
+plt.title('MAPE by Model and Interval')
+plt.ylabel('Mean Absolute Percentage Error (%)')
+plt.xticks(rotation=45)
 plt.tight_layout()
 plt.savefig(os.path.join(histograms_dir, 'combined_distributions.png'))
 plt.close()
 
-# Create NVDA-specific analysis directory
-nvda_analysis_dir = os.path.join(figures_dir, 'nvda_analysis')
-os.makedirs(nvda_analysis_dir, exist_ok=True)
+# Create comparisons directory
+comparisons_dir = os.path.join(figures_dir, 'comparisons')
+os.makedirs(comparisons_dir, exist_ok=True)
 
-# Analyze NVDA across all intervals and models
-nvda_metrics = metrics_df[metrics_df['ticker'] == 'NVDA']
-
-# 1. Create interval comparison plots for each model
-for model in ['chronos', 'timesfm']:
-    model_data = nvda_metrics[nvda_metrics['model'] == model]
-    
-    # Boxplot for MAE across intervals
-    plt.figure(figsize=(10, 6))
-    sns.boxplot(data=model_data, x='interval', y='MAE')
-    plt.title(f'{model.capitalize()} Model - MAE Distribution Across Intervals (NVDA)')
-    plt.xlabel('Time Interval')
-    plt.ylabel('Mean Absolute Error')
-    plt.tight_layout()
-    plt.savefig(os.path.join(nvda_analysis_dir, f'{model}_intervals_mae_dist.png'))
-    plt.close()
-
-# 2. Create model comparison plots for each interval
+# Create ticker comparisons for each interval
 for interval in ['5M', '15M', '1H']:
-    interval_data = nvda_metrics[nvda_metrics['interval'] == interval]
-    
-    # Performance comparison boxplot
-    plt.figure(figsize=(12, 6))
-    sns.boxplot(data=interval_data, x='model', y='MAE')
-    plt.title(f'Model Comparison - {interval} Interval (NVDA)')
-    plt.xlabel('Model')
-    plt.ylabel('Mean Absolute Error')
-    plt.tight_layout()
-    plt.savefig(os.path.join(nvda_analysis_dir, f'{interval}_model_comparison.png'))
-    plt.close()
+    # Filter out VKTX for 1H interval
+    interval_metrics = metrics_df[metrics_df['interval'] == interval]
+    if interval == '1H':
+        interval_metrics = interval_metrics[interval_metrics['ticker'] != 'VKTX']
 
-# 3. Create comprehensive metrics table for NVDA
-nvda_summary = nvda_metrics.groupby(['model', 'interval']).agg({
-    'MAE': ['mean', 'std'],
-    'RMSE': ['mean', 'std'],
-    'MAPE': ['mean', 'std']
-}).round(4)
+    # Create plots for each metric
+    for metric, metric_label in [
+        ('MAPE', 'Mean Absolute Percentage Error (%)'),
+        ('error_volatility', 'Error Volatility'),
+        ('directional_accuracy', 'Directional Accuracy (%)')
+    ]:
+        plt.figure(figsize=(15, 8))
+        # Modified barplot to remove error bars
+        sns.barplot(
+            data=interval_metrics, 
+            x='ticker', 
+            y=metric, 
+            hue='model',
+            ci=None,  # Remove error bars completely
+            saturation=0.7  # Slightly reduce color saturation for better visibility
+        )
+        
+        plt.title(f'{metric_label} Comparison - {interval} Interval')
+        plt.xlabel('Ticker')
+        plt.ylabel(metric_label)
+        plt.xticks(rotation=45)
+        plt.legend(title='Model')
+        plt.tight_layout()
+        plt.savefig(os.path.join(comparisons_dir, f'{metric.lower()}_comparison_{interval}.png'))
+        plt.close()
 
-# Save NVDA summary to CSV
-nvda_summary.to_csv(os.path.join(nvda_analysis_dir, 'nvda_metrics_summary.csv'))
-
-# 4. Create heatmap of metrics across models and intervals
-metrics_pivot = pd.pivot_table(
-    nvda_metrics,
-    values=['MAE', 'RMSE', 'MAPE'],
-    index='interval',
-    columns='model',
-    aggfunc='mean'
-)
-
-# Plot heatmaps for each metric
-for metric in ['MAE', 'RMSE', 'MAPE']:
-    plt.figure(figsize=(8, 4))
-    sns.heatmap(metrics_pivot.loc[:, metric], annot=True, fmt='.4f', cmap='YlOrRd')
-    plt.title(f'NVDA {metric} Comparison - Models vs Intervals')
-    plt.tight_layout()
-    plt.savefig(os.path.join(nvda_analysis_dir, f'nvda_{metric.lower()}_heatmap.png'))
-    plt.close()
-
-# 5. Statistical tests for model comparison at each interval
-statistical_tests = []
-for interval in ['5M', '15M', '1H']:
-    interval_data = nvda_metrics[nvda_metrics['interval'] == interval]
-    chronos_data = interval_data[interval_data['model'] == 'chronos']['MAE'].values
-    timesfm_data = interval_data[interval_data['model'] == 'timesfm']['MAE'].values
-    
-    if len(chronos_data) > 0 and len(timesfm_data) > 0:
-        # Use independent t-test instead of paired test since we might have different numbers of samples
-        t_stat, p_value = ttest_ind(chronos_data, timesfm_data, equal_var=False)  # Using Welch's t-test
-        statistical_tests.append({
-            'interval': interval,
-            'chronos_samples': len(chronos_data),
-            'timesfm_samples': len(timesfm_data),
-            't_statistic': t_stat,
-            'p_value': p_value
-        })
-    else:
-        print(f"Warning: Missing data for interval {interval}")
-        print(f"Chronos samples: {len(chronos_data)}, TimesFM samples: {len(timesfm_data)}")
-
-# Save statistical test results with sample sizes
-statistical_results = pd.DataFrame(statistical_tests)
-if not statistical_results.empty:
-    statistical_results.to_csv(os.path.join(nvda_analysis_dir, 'statistical_tests.csv'), index=False)
-    
-    # Print summary of findings with sample sizes
-    print("\nNVDA Analysis Summary:")
-    print("=" * 50)
-    print("\nMean MAE by Model and Interval:")
-    print(metrics_pivot['MAE'].round(4))
-    print("\nStatistical Test Results:")
-    print(statistical_results.round(4))
-else:
-    print("\nNo statistical tests could be performed due to insufficient data")
-
-# Aggregate metrics by model, interval, and ticker
-agg_metrics = metrics_df.groupby(['model', 'interval', 'ticker']).agg({
-    'MAE': ['mean', 'std'],
-    'RMSE': ['mean', 'std'],
-    'MAPE': ['mean', 'std']
-}).reset_index()
-
-# Fix column names while preserving the original column structure
-agg_metrics.columns = [f"{col[0]}{'_' + col[1] if col[1] else ''}" for col in agg_metrics.columns]
-
-# Compare models for 1H interval
-one_hour_metrics = agg_metrics[agg_metrics['interval'] == '1H']
-common_tickers = np.intersect1d(
-    one_hour_metrics[one_hour_metrics['model'] == 'chronos']['ticker'].unique(),
-    one_hour_metrics[one_hour_metrics['model'] == 'timesfm']['ticker'].unique()
-)
-comparison_df = one_hour_metrics[one_hour_metrics['ticker'].isin(common_tickers)]
-
-# Visualize MAPE comparison across tickers
-plt.figure(figsize=(12, 6))
-sns.barplot(data=comparison_df, x='ticker', y='MAPE_mean', hue='model', errorbar='sd')
-plt.title('Mean MAPE (%) with Standard Deviation for 1H Interval by Ticker and Model')
-plt.xlabel('Ticker')
-plt.ylabel('Mean Absolute Percentage Error (%)')
-plt.xticks(rotation=45)
-plt.tight_layout()
-plt.savefig(os.path.join(figures_dir, 'ticker_comparison.png'))
-plt.close()
-
-# Statistical test on MAPE
-paired_mape = comparison_df.pivot(index='ticker', columns='model', values='MAPE_mean')
-t_stat, p_value = ttest_ind(paired_mape['chronos'], paired_mape['timesfm'], equal_var=False)
-print(f'Independent t-test p-value for MAPE comparison: {p_value}')
-
-# Create MAPE comparisons for each interval
-for interval in ['5M', '15M', '1H']:
-    interval_metrics = agg_metrics[agg_metrics['interval'] == interval]
-    common_tickers = np.intersect1d(
-        interval_metrics[interval_metrics['model'] == 'chronos']['ticker'].unique(),
-        interval_metrics[interval_metrics['model'] == 'timesfm']['ticker'].unique()
-    )
-    comparison_df = interval_metrics[interval_metrics['ticker'].isin(common_tickers)]
-
-    # Visualize MAPE comparison across tickers
-    plt.figure(figsize=(12, 6))
-    sns.barplot(data=comparison_df, x='ticker', y='MAPE_mean', hue='model', errorbar='sd')
-    plt.title(f'Mean MAPE (%) with Standard Deviation for {interval} Interval by Ticker and Model')
-    plt.xlabel('Ticker')
-    plt.ylabel('Mean Absolute Percentage Error (%)')
-    plt.xticks(rotation=45)
-    plt.tight_layout()
-    plt.savefig(os.path.join(figures_dir, f'ticker_comparison_{interval}.png'))
-    plt.close()
-
-    # Statistical test on MAPE for each interval
-    paired_mape = comparison_df.pivot(index='ticker', columns='model', values='MAPE_mean')
-    t_stat, p_value = ttest_ind(paired_mape['chronos'], paired_mape['timesfm'], equal_var=False)
-    print(f'Independent t-test p-value for MAPE comparison ({interval}): {p_value}')
+        # Handle duplicates by aggregating before statistical test
+        agg_data = interval_metrics.groupby(['ticker', 'model'])[metric].mean().reset_index()
+        stats_data = agg_data.pivot(index='ticker', columns='model', values=metric)
+        t_stat, p_value = ttest_ind(
+            stats_data['chronos'].dropna(),
+            stats_data['timesfm'].dropna(),
+            equal_var=False
+        )
+        print(f'\nStatistical test for {metric} ({interval}):')
+        print(f'T-statistic: {t_stat:.4f}')
+        print(f'P-value: {p_value:.4f}')
 
 # Distribution of MAPE per window for 1H interval
 one_hour_windows = metrics_df[metrics_df['interval'] == '1H']
+one_hour_windows = one_hour_windows[one_hour_windows['ticker'] != 'VKTX']  # Filter out VKTX
 plt.figure(figsize=(8, 6))
-sns.boxplot(data=one_hour_windows, x='model', y='MAPE')
+sns.boxplot(data=one_hour_windows, x='model', y='MAPE', 
+            showfliers=False,  # Remove outlier points
+            whiskerprops=dict(color="lightgray"),  # Keep whisker lines
+            medianprops=dict(color="none"),  # Remove median line
+            boxprops=dict(alpha=0.5),  # Make boxes slightly transparent
+            capprops=dict(color="none"),  # Remove cap lines
+            width=0.5)  # Adjust width of boxes
 plt.title('Distribution of MAPE (%) per Window for 1H Interval by Model')
 plt.ylabel('Mean Absolute Percentage Error (%)')
 plt.tight_layout()
 plt.savefig(os.path.join(figures_dir, 'model_comparison_1h.png'))
-plt.close()
-
-# Analyze chronos across intervals for NVDA
-nvda_chronos = metrics_df[(metrics_df['ticker'] == 'NVDA') & (metrics_df['model'] == 'chronos')]
-nvda_by_interval = nvda_chronos.groupby('interval').agg({
-    'MAE': ['mean', 'std'],
-    'RMSE': ['mean', 'std'],
-    'MAPE': ['mean', 'std']
-}).reset_index()
-
-# Fix column names for NVDA analysis in the same way as before
-nvda_by_interval.columns = [f"{col[0]}{'_' + col[1] if col[1] else ''}" for col in nvda_by_interval.columns]
-
-plt.figure(figsize=(8, 6))
-sns.barplot(data=nvda_by_interval, x='interval', y='MAE_mean', errorbar='sd')
-plt.title('Mean MAE with Standard Deviation for Chronos on NVDA by Interval')
-plt.xlabel('Interval')
-plt.ylabel('Mean MAE')
-plt.tight_layout()
-plt.savefig(os.path.join(figures_dir, 'chronos_nvda_intervals.png'))
 plt.close()
