@@ -109,7 +109,7 @@
 
 ### Recommendations
 1. Model Selection
-   - Use TimesFM for general predictions
+   - Use Chronos for general predictions
    - Consider Chronos for specific high-volatility scenarios
    - Implement ensemble approach for critical predictions
 

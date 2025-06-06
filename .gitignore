@@ -1,6 +1,7 @@
 .ipynb_checkpoints/
 .env/
 myenv/
+config/
 myenv-3-10/
 *.ipynb~
 .DS_Store

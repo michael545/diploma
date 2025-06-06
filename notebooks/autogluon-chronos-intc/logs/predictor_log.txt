@@ -1,0 +1,986 @@
+Beginning AutoGluon training... Time limit = 600s
+AutoGluon will save models to 'c:\Users\micha\code\finance\diploma\notebooks\autogluon-chronos-intc'
+=================== System Info ===================
+AutoGluon Version:  1.3.0
+Python Version:     3.10.1
+Operating System:   Windows
+Platform Machine:   AMD64
+Platform Version:   10.0.26100
+CPU Count:          32
+GPU Count:          0
+Memory Avail:       34.27 GB / 63.10 GB (54.3%)
+Disk Space Avail:   172.06 GB / 465.02 GB (37.0%)
+===================================================
+Setting presets to: medium_quality
+
+Fitting with arguments:
+{'enable_ensemble': True,
+ 'eval_metric': MASE,
+ 'hyperparameters': {'Chronos': {}},
+ 'known_covariates_names': [],
+ 'num_val_windows': 1,
+ 'prediction_length': 24,
+ 'quantile_levels': [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9],
+ 'random_seed': 123,
+ 'refit_every_n_windows': 1,
+ 'refit_full': False,
+ 'skip_model_selection': False,
+ 'target': 'target',
+ 'time_limit': 600,
+ 'verbosity': 2}
+
+Warning: path already exists! This predictor may overwrite an existing predictor! path="autogluon-chronos-intc"
+Frequency '1H' stored as 'h'
+Frequency '1H' stored as 'h'
+Beginning AutoGluon training... Time limit = 600s
+Beginning AutoGluon training... Time limit = 600s
+AutoGluon will save models to 'c:\Users\micha\code\finance\diploma\notebooks\autogluon-chronos-intc'
+AutoGluon will save models to 'c:\Users\micha\code\finance\diploma\notebooks\autogluon-chronos-intc'
+=================== System Info ===================
+AutoGluon Version:  1.3.0
+Python Version:     3.10.1
+Operating System:   Windows
+Platform Machine:   AMD64
+Platform Version:   10.0.26100
+CPU Count:          32
+GPU Count:          0
+Memory Avail:       33.08 GB / 63.10 GB (52.4%)
+Disk Space Avail:   172.06 GB / 465.02 GB (37.0%)
+===================================================
+=================== System Info ===================
+AutoGluon Version:  1.3.0
+Python Version:     3.10.1
+Operating System:   Windows
+Platform Machine:   AMD64
+Platform Version:   10.0.26100
+CPU Count:          32
+GPU Count:          0
+Memory Avail:       33.08 GB / 63.10 GB (52.4%)
+Disk Space Avail:   172.06 GB / 465.02 GB (37.0%)
+===================================================
+Setting presets to: medium_quality
+Setting presets to: medium_quality
+
+Fitting with arguments:
+
+Fitting with arguments:
+{'enable_ensemble': True,
+ 'eval_metric': MASE,
+ 'freq': 'h',
+ 'hyperparameters': {'Chronos': {}},
+ 'known_covariates_names': [],
+ 'num_val_windows': 1,
+ 'prediction_length': 24,
+ 'quantile_levels': [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9],
+ 'random_seed': 123,
+ 'refit_every_n_windows': 1,
+ 'refit_full': False,
+ 'skip_model_selection': False,
+ 'target': 'target',
+ 'time_limit': 600,
+ 'verbosity': 2}
+
+{'enable_ensemble': True,
+ 'eval_metric': MASE,
+ 'freq': 'h',
+ 'hyperparameters': {'Chronos': {}},
+ 'known_covariates_names': [],
+ 'num_val_windows': 1,
+ 'prediction_length': 24,
+ 'quantile_levels': [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9],
+ 'random_seed': 123,
+ 'refit_every_n_windows': 1,
+ 'refit_full': False,
+ 'skip_model_selection': False,
+ 'target': 'target',
+ 'time_limit': 600,
+ 'verbosity': 2}
+
+Provided train_data has 13983 rows (NaN fraction=54.8%), 1 time series. Median time series length is 13983 (min=13983, max=13983). 
+Provided train_data has 13983 rows (NaN fraction=54.8%), 1 time series. Median time series length is 13983 (min=13983, max=13983). 
+
+Provided data contains following columns:
+
+Provided data contains following columns:
+	target: 'target'
+	target: 'target'
+
+AutoGluon will gauge predictive performance using evaluation metric: 'MASE'
+
+AutoGluon will gauge predictive performance using evaluation metric: 'MASE'
+	This metric's sign has been flipped to adhere to being higher_is_better. The metric score can be multiplied by -1 to get the metric value.
+	This metric's sign has been flipped to adhere to being higher_is_better. The metric score can be multiplied by -1 to get the metric value.
+===================================================
+===================================================
+
+Starting training. Start time is 2025-05-13 16:55:32
+
+Starting training. Start time is 2025-05-13 16:55:32
+Models that will be trained: ['Chronos[autogluon__chronos-bolt-small]']
+Models that will be trained: ['Chronos[autogluon__chronos-bolt-small]']
+Training timeseries model Chronos[autogluon__chronos-bolt-small]. Training for up to 600.0s of the 600.0s of remaining time.
+Training timeseries model Chronos[autogluon__chronos-bolt-small]. Training for up to 600.0s of the 600.0s of remaining time.
+	-0.4710       = Validation score (-MASE)
+	-0.4710       = Validation score (-MASE)
+	6.14    s     = Training runtime
+	6.14    s     = Training runtime
+	7.29    s     = Validation (prediction) runtime
+	7.29    s     = Validation (prediction) runtime
+Not fitting ensemble as only 1 model was trained.
+Not fitting ensemble as only 1 model was trained.
+Training complete. Models trained: ['Chronos[autogluon__chronos-bolt-small]']
+Training complete. Models trained: ['Chronos[autogluon__chronos-bolt-small]']
+Total runtime: 13.44 s
+Total runtime: 13.44 s
+Best model: Chronos[autogluon__chronos-bolt-small]
+Best model: Chronos[autogluon__chronos-bolt-small]
+Best model score: -0.4710
+Best model score: -0.4710
+Model not specified in predict, will default to the model with the best validation score: Chronos[autogluon__chronos-bolt-small]
+Model not specified in predict, will default to the model with the best validation score: Chronos[autogluon__chronos-bolt-small]
+Warning: path already exists! This predictor may overwrite an existing predictor! path="autogluon-chronos-intc"
+Warning: path already exists! This predictor may overwrite an existing predictor! path="autogluon-chronos-intc"
+Frequency '1H' stored as 'h'
+Frequency '1H' stored as 'h'
+Frequency '1H' stored as 'h'
+Beginning AutoGluon training... Time limit = 600s
+Beginning AutoGluon training... Time limit = 600s
+Beginning AutoGluon training... Time limit = 600s
+AutoGluon will save models to 'c:\Users\micha\code\finance\diploma\notebooks\autogluon-chronos-intc'
+AutoGluon will save models to 'c:\Users\micha\code\finance\diploma\notebooks\autogluon-chronos-intc'
+AutoGluon will save models to 'c:\Users\micha\code\finance\diploma\notebooks\autogluon-chronos-intc'
+=================== System Info ===================
+AutoGluon Version:  1.3.0
+Python Version:     3.10.1
+Operating System:   Windows
+Platform Machine:   AMD64
+Platform Version:   10.0.26100
+CPU Count:          32
+GPU Count:          0
+Memory Avail:       33.02 GB / 63.10 GB (52.3%)
+Disk Space Avail:   171.88 GB / 465.02 GB (37.0%)
+===================================================
+=================== System Info ===================
+AutoGluon Version:  1.3.0
+Python Version:     3.10.1
+Operating System:   Windows
+Platform Machine:   AMD64
+Platform Version:   10.0.26100
+CPU Count:          32
+GPU Count:          0
+Memory Avail:       33.02 GB / 63.10 GB (52.3%)
+Disk Space Avail:   171.88 GB / 465.02 GB (37.0%)
+===================================================
+=================== System Info ===================
+AutoGluon Version:  1.3.0
+Python Version:     3.10.1
+Operating System:   Windows
+Platform Machine:   AMD64
+Platform Version:   10.0.26100
+CPU Count:          32
+GPU Count:          0
+Memory Avail:       33.02 GB / 63.10 GB (52.3%)
+Disk Space Avail:   171.88 GB / 465.02 GB (37.0%)
+===================================================
+Setting presets to: medium_quality
+Setting presets to: medium_quality
+Setting presets to: medium_quality
+
+Fitting with arguments:
+
+Fitting with arguments:
+
+Fitting with arguments:
+{'enable_ensemble': True,
+ 'eval_metric': MASE,
+ 'freq': 'h',
+ 'hyperparameters': {'Chronos': {}},
+ 'known_covariates_names': [],
+ 'num_val_windows': 1,
+ 'prediction_length': 24,
+ 'quantile_levels': [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9],
+ 'random_seed': 123,
+ 'refit_every_n_windows': 1,
+ 'refit_full': False,
+ 'skip_model_selection': False,
+ 'target': 'target',
+ 'time_limit': 600,
+ 'verbosity': 2}
+
+{'enable_ensemble': True,
+ 'eval_metric': MASE,
+ 'freq': 'h',
+ 'hyperparameters': {'Chronos': {}},
+ 'known_covariates_names': [],
+ 'num_val_windows': 1,
+ 'prediction_length': 24,
+ 'quantile_levels': [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9],
+ 'random_seed': 123,
+ 'refit_every_n_windows': 1,
+ 'refit_full': False,
+ 'skip_model_selection': False,
+ 'target': 'target',
+ 'time_limit': 600,
+ 'verbosity': 2}
+
+{'enable_ensemble': True,
+ 'eval_metric': MASE,
+ 'freq': 'h',
+ 'hyperparameters': {'Chronos': {}},
+ 'known_covariates_names': [],
+ 'num_val_windows': 1,
+ 'prediction_length': 24,
+ 'quantile_levels': [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9],
+ 'random_seed': 123,
+ 'refit_every_n_windows': 1,
+ 'refit_full': False,
+ 'skip_model_selection': False,
+ 'target': 'target',
+ 'time_limit': 600,
+ 'verbosity': 2}
+
+train_data with frequency 'IRREG' has been resampled to frequency 'h'.
+train_data with frequency 'IRREG' has been resampled to frequency 'h'.
+train_data with frequency 'IRREG' has been resampled to frequency 'h'.
+Provided train_data has 13869 rows (NaN fraction=55.0%), 1 time series. Median time series length is 13869 (min=13869, max=13869). 
+Provided train_data has 13869 rows (NaN fraction=55.0%), 1 time series. Median time series length is 13869 (min=13869, max=13869). 
+Provided train_data has 13869 rows (NaN fraction=55.0%), 1 time series. Median time series length is 13869 (min=13869, max=13869). 
+
+Provided data contains following columns:
+
+Provided data contains following columns:
+
+Provided data contains following columns:
+	target: 'target'
+	target: 'target'
+	target: 'target'
+
+AutoGluon will gauge predictive performance using evaluation metric: 'MASE'
+
+AutoGluon will gauge predictive performance using evaluation metric: 'MASE'
+
+AutoGluon will gauge predictive performance using evaluation metric: 'MASE'
+	This metric's sign has been flipped to adhere to being higher_is_better. The metric score can be multiplied by -1 to get the metric value.
+	This metric's sign has been flipped to adhere to being higher_is_better. The metric score can be multiplied by -1 to get the metric value.
+	This metric's sign has been flipped to adhere to being higher_is_better. The metric score can be multiplied by -1 to get the metric value.
+===================================================
+===================================================
+===================================================
+
+Starting training. Start time is 2025-05-13 16:57:24
+
+Starting training. Start time is 2025-05-13 16:57:24
+
+Starting training. Start time is 2025-05-13 16:57:24
+Models that will be trained: ['Chronos[autogluon__chronos-bolt-small]']
+Models that will be trained: ['Chronos[autogluon__chronos-bolt-small]']
+Models that will be trained: ['Chronos[autogluon__chronos-bolt-small]']
+Training timeseries model Chronos[autogluon__chronos-bolt-small]. Training for up to 599.8s of the 599.8s of remaining time.
+Training timeseries model Chronos[autogluon__chronos-bolt-small]. Training for up to 599.8s of the 599.8s of remaining time.
+Training timeseries model Chronos[autogluon__chronos-bolt-small]. Training for up to 599.8s of the 599.8s of remaining time.
+	-0.1810       = Validation score (-MASE)
+	-0.1810       = Validation score (-MASE)
+	-0.1810       = Validation score (-MASE)
+	0.02    s     = Training runtime
+	0.02    s     = Training runtime
+	0.02    s     = Training runtime
+	0.91    s     = Validation (prediction) runtime
+	0.91    s     = Validation (prediction) runtime
+	0.91    s     = Validation (prediction) runtime
+Not fitting ensemble as only 1 model was trained.
+Not fitting ensemble as only 1 model was trained.
+Not fitting ensemble as only 1 model was trained.
+Training complete. Models trained: ['Chronos[autogluon__chronos-bolt-small]']
+Training complete. Models trained: ['Chronos[autogluon__chronos-bolt-small]']
+Training complete. Models trained: ['Chronos[autogluon__chronos-bolt-small]']
+Total runtime: 0.93 s
+Total runtime: 0.93 s
+Total runtime: 0.93 s
+Best model: Chronos[autogluon__chronos-bolt-small]
+Best model: Chronos[autogluon__chronos-bolt-small]
+Best model: Chronos[autogluon__chronos-bolt-small]
+Best model score: -0.1810
+Best model score: -0.1810
+Best model score: -0.1810
+data with frequency 'IRREG' has been resampled to frequency 'h'.
+data with frequency 'IRREG' has been resampled to frequency 'h'.
+data with frequency 'IRREG' has been resampled to frequency 'h'.
+Model not specified in predict, will default to the model with the best validation score: Chronos[autogluon__chronos-bolt-small]
+Model not specified in predict, will default to the model with the best validation score: Chronos[autogluon__chronos-bolt-small]
+Model not specified in predict, will default to the model with the best validation score: Chronos[autogluon__chronos-bolt-small]
+Warning: path already exists! This predictor may overwrite an existing predictor! path="autogluon-chronos-intc"
+Warning: path already exists! This predictor may overwrite an existing predictor! path="autogluon-chronos-intc"
+Warning: path already exists! This predictor may overwrite an existing predictor! path="autogluon-chronos-intc"
+Frequency '1H' stored as 'h'
+Frequency '1H' stored as 'h'
+Frequency '1H' stored as 'h'
+Frequency '1H' stored as 'h'
+Beginning AutoGluon training... Time limit = 600s
+Beginning AutoGluon training... Time limit = 600s
+Beginning AutoGluon training... Time limit = 600s
+Beginning AutoGluon training... Time limit = 600s
+AutoGluon will save models to 'c:\Users\micha\code\finance\diploma\notebooks\autogluon-chronos-intc'
+AutoGluon will save models to 'c:\Users\micha\code\finance\diploma\notebooks\autogluon-chronos-intc'
+AutoGluon will save models to 'c:\Users\micha\code\finance\diploma\notebooks\autogluon-chronos-intc'
+AutoGluon will save models to 'c:\Users\micha\code\finance\diploma\notebooks\autogluon-chronos-intc'
+=================== System Info ===================
+AutoGluon Version:  1.3.0
+Python Version:     3.10.1
+Operating System:   Windows
+Platform Machine:   AMD64
+Platform Version:   10.0.26100
+CPU Count:          32
+GPU Count:          0
+Memory Avail:       32.87 GB / 63.10 GB (52.1%)
+Disk Space Avail:   171.89 GB / 465.02 GB (37.0%)
+===================================================
+=================== System Info ===================
+AutoGluon Version:  1.3.0
+Python Version:     3.10.1
+Operating System:   Windows
+Platform Machine:   AMD64
+Platform Version:   10.0.26100
+CPU Count:          32
+GPU Count:          0
+Memory Avail:       32.87 GB / 63.10 GB (52.1%)
+Disk Space Avail:   171.89 GB / 465.02 GB (37.0%)
+===================================================
+=================== System Info ===================
+AutoGluon Version:  1.3.0
+Python Version:     3.10.1
+Operating System:   Windows
+Platform Machine:   AMD64
+Platform Version:   10.0.26100
+CPU Count:          32
+GPU Count:          0
+Memory Avail:       32.87 GB / 63.10 GB (52.1%)
+Disk Space Avail:   171.89 GB / 465.02 GB (37.0%)
+===================================================
+=================== System Info ===================
+AutoGluon Version:  1.3.0
+Python Version:     3.10.1
+Operating System:   Windows
+Platform Machine:   AMD64
+Platform Version:   10.0.26100
+CPU Count:          32
+GPU Count:          0
+Memory Avail:       32.87 GB / 63.10 GB (52.1%)
+Disk Space Avail:   171.89 GB / 465.02 GB (37.0%)
+===================================================
+Setting presets to: medium_quality
+Setting presets to: medium_quality
+Setting presets to: medium_quality
+Setting presets to: medium_quality
+
+Fitting with arguments:
+
+Fitting with arguments:
+
+Fitting with arguments:
+
+Fitting with arguments:
+{'enable_ensemble': True,
+ 'eval_metric': MASE,
+ 'freq': 'h',
+ 'hyperparameters': {'Chronos': {}},
+ 'known_covariates_names': [],
+ 'num_val_windows': 1,
+ 'prediction_length': 24,
+ 'quantile_levels': [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9],
+ 'random_seed': 123,
+ 'refit_every_n_windows': 1,
+ 'refit_full': False,
+ 'skip_model_selection': False,
+ 'target': 'target',
+ 'time_limit': 600,
+ 'verbosity': 2}
+
+{'enable_ensemble': True,
+ 'eval_metric': MASE,
+ 'freq': 'h',
+ 'hyperparameters': {'Chronos': {}},
+ 'known_covariates_names': [],
+ 'num_val_windows': 1,
+ 'prediction_length': 24,
+ 'quantile_levels': [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9],
+ 'random_seed': 123,
+ 'refit_every_n_windows': 1,
+ 'refit_full': False,
+ 'skip_model_selection': False,
+ 'target': 'target',
+ 'time_limit': 600,
+ 'verbosity': 2}
+
+{'enable_ensemble': True,
+ 'eval_metric': MASE,
+ 'freq': 'h',
+ 'hyperparameters': {'Chronos': {}},
+ 'known_covariates_names': [],
+ 'num_val_windows': 1,
+ 'prediction_length': 24,
+ 'quantile_levels': [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9],
+ 'random_seed': 123,
+ 'refit_every_n_windows': 1,
+ 'refit_full': False,
+ 'skip_model_selection': False,
+ 'target': 'target',
+ 'time_limit': 600,
+ 'verbosity': 2}
+
+{'enable_ensemble': True,
+ 'eval_metric': MASE,
+ 'freq': 'h',
+ 'hyperparameters': {'Chronos': {}},
+ 'known_covariates_names': [],
+ 'num_val_windows': 1,
+ 'prediction_length': 24,
+ 'quantile_levels': [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9],
+ 'random_seed': 123,
+ 'refit_every_n_windows': 1,
+ 'refit_full': False,
+ 'skip_model_selection': False,
+ 'target': 'target',
+ 'time_limit': 600,
+ 'verbosity': 2}
+
+train_data with frequency 'IRREG' has been resampled to frequency 'h'.
+train_data with frequency 'IRREG' has been resampled to frequency 'h'.
+train_data with frequency 'IRREG' has been resampled to frequency 'h'.
+train_data with frequency 'IRREG' has been resampled to frequency 'h'.
+Provided train_data has 13869 rows (NaN fraction=55.0%), 1 time series. Median time series length is 13869 (min=13869, max=13869). 
+Provided train_data has 13869 rows (NaN fraction=55.0%), 1 time series. Median time series length is 13869 (min=13869, max=13869). 
+Provided train_data has 13869 rows (NaN fraction=55.0%), 1 time series. Median time series length is 13869 (min=13869, max=13869). 
+Provided train_data has 13869 rows (NaN fraction=55.0%), 1 time series. Median time series length is 13869 (min=13869, max=13869). 
+
+Provided data contains following columns:
+
+Provided data contains following columns:
+
+Provided data contains following columns:
+
+Provided data contains following columns:
+	target: 'target'
+	target: 'target'
+	target: 'target'
+	target: 'target'
+
+AutoGluon will gauge predictive performance using evaluation metric: 'MASE'
+
+AutoGluon will gauge predictive performance using evaluation metric: 'MASE'
+
+AutoGluon will gauge predictive performance using evaluation metric: 'MASE'
+
+AutoGluon will gauge predictive performance using evaluation metric: 'MASE'
+	This metric's sign has been flipped to adhere to being higher_is_better. The metric score can be multiplied by -1 to get the metric value.
+	This metric's sign has been flipped to adhere to being higher_is_better. The metric score can be multiplied by -1 to get the metric value.
+	This metric's sign has been flipped to adhere to being higher_is_better. The metric score can be multiplied by -1 to get the metric value.
+	This metric's sign has been flipped to adhere to being higher_is_better. The metric score can be multiplied by -1 to get the metric value.
+===================================================
+===================================================
+===================================================
+===================================================
+
+Starting training. Start time is 2025-05-13 16:58:43
+
+Starting training. Start time is 2025-05-13 16:58:43
+
+Starting training. Start time is 2025-05-13 16:58:43
+
+Starting training. Start time is 2025-05-13 16:58:43
+Models that will be trained: ['Chronos[autogluon__chronos-bolt-small]']
+Models that will be trained: ['Chronos[autogluon__chronos-bolt-small]']
+Models that will be trained: ['Chronos[autogluon__chronos-bolt-small]']
+Models that will be trained: ['Chronos[autogluon__chronos-bolt-small]']
+Training timeseries model Chronos[autogluon__chronos-bolt-small]. Training for up to 599.8s of the 599.8s of remaining time.
+Training timeseries model Chronos[autogluon__chronos-bolt-small]. Training for up to 599.8s of the 599.8s of remaining time.
+Training timeseries model Chronos[autogluon__chronos-bolt-small]. Training for up to 599.8s of the 599.8s of remaining time.
+Training timeseries model Chronos[autogluon__chronos-bolt-small]. Training for up to 599.8s of the 599.8s of remaining time.
+	-0.1810       = Validation score (-MASE)
+	-0.1810       = Validation score (-MASE)
+	-0.1810       = Validation score (-MASE)
+	-0.1810       = Validation score (-MASE)
+	0.01    s     = Training runtime
+	0.01    s     = Training runtime
+	0.01    s     = Training runtime
+	0.01    s     = Training runtime
+	0.76    s     = Validation (prediction) runtime
+	0.76    s     = Validation (prediction) runtime
+	0.76    s     = Validation (prediction) runtime
+	0.76    s     = Validation (prediction) runtime
+Not fitting ensemble as only 1 model was trained.
+Not fitting ensemble as only 1 model was trained.
+Not fitting ensemble as only 1 model was trained.
+Not fitting ensemble as only 1 model was trained.
+Training complete. Models trained: ['Chronos[autogluon__chronos-bolt-small]']
+Training complete. Models trained: ['Chronos[autogluon__chronos-bolt-small]']
+Training complete. Models trained: ['Chronos[autogluon__chronos-bolt-small]']
+Training complete. Models trained: ['Chronos[autogluon__chronos-bolt-small]']
+Total runtime: 0.78 s
+Total runtime: 0.78 s
+Total runtime: 0.78 s
+Total runtime: 0.78 s
+Best model: Chronos[autogluon__chronos-bolt-small]
+Best model: Chronos[autogluon__chronos-bolt-small]
+Best model: Chronos[autogluon__chronos-bolt-small]
+Best model: Chronos[autogluon__chronos-bolt-small]
+Best model score: -0.1810
+Best model score: -0.1810
+Best model score: -0.1810
+Best model score: -0.1810
+data with frequency 'IRREG' has been resampled to frequency 'h'.
+data with frequency 'IRREG' has been resampled to frequency 'h'.
+data with frequency 'IRREG' has been resampled to frequency 'h'.
+data with frequency 'IRREG' has been resampled to frequency 'h'.
+Model not specified in predict, will default to the model with the best validation score: Chronos[autogluon__chronos-bolt-small]
+Model not specified in predict, will default to the model with the best validation score: Chronos[autogluon__chronos-bolt-small]
+Model not specified in predict, will default to the model with the best validation score: Chronos[autogluon__chronos-bolt-small]
+Model not specified in predict, will default to the model with the best validation score: Chronos[autogluon__chronos-bolt-small]
+Warning: path already exists! This predictor may overwrite an existing predictor! path="autogluon-chronos-intc"
+Warning: path already exists! This predictor may overwrite an existing predictor! path="autogluon-chronos-intc"
+Warning: path already exists! This predictor may overwrite an existing predictor! path="autogluon-chronos-intc"
+Warning: path already exists! This predictor may overwrite an existing predictor! path="autogluon-chronos-intc"
+Frequency '1H' stored as 'h'
+Frequency '1H' stored as 'h'
+Frequency '1H' stored as 'h'
+Frequency '1H' stored as 'h'
+Frequency '1H' stored as 'h'
+Beginning AutoGluon training... Time limit = 600s
+Beginning AutoGluon training... Time limit = 600s
+Beginning AutoGluon training... Time limit = 600s
+Beginning AutoGluon training... Time limit = 600s
+Beginning AutoGluon training... Time limit = 600s
+AutoGluon will save models to 'c:\Users\micha\code\finance\diploma\notebooks\autogluon-chronos-intc'
+AutoGluon will save models to 'c:\Users\micha\code\finance\diploma\notebooks\autogluon-chronos-intc'
+AutoGluon will save models to 'c:\Users\micha\code\finance\diploma\notebooks\autogluon-chronos-intc'
+AutoGluon will save models to 'c:\Users\micha\code\finance\diploma\notebooks\autogluon-chronos-intc'
+AutoGluon will save models to 'c:\Users\micha\code\finance\diploma\notebooks\autogluon-chronos-intc'
+=================== System Info ===================
+AutoGluon Version:  1.3.0
+Python Version:     3.10.1
+Operating System:   Windows
+Platform Machine:   AMD64
+Platform Version:   10.0.26100
+CPU Count:          32
+GPU Count:          0
+Memory Avail:       32.75 GB / 63.10 GB (51.9%)
+Disk Space Avail:   171.88 GB / 465.02 GB (37.0%)
+===================================================
+=================== System Info ===================
+AutoGluon Version:  1.3.0
+Python Version:     3.10.1
+Operating System:   Windows
+Platform Machine:   AMD64
+Platform Version:   10.0.26100
+CPU Count:          32
+GPU Count:          0
+Memory Avail:       32.75 GB / 63.10 GB (51.9%)
+Disk Space Avail:   171.88 GB / 465.02 GB (37.0%)
+===================================================
+=================== System Info ===================
+AutoGluon Version:  1.3.0
+Python Version:     3.10.1
+Operating System:   Windows
+Platform Machine:   AMD64
+Platform Version:   10.0.26100
+CPU Count:          32
+GPU Count:          0
+Memory Avail:       32.75 GB / 63.10 GB (51.9%)
+Disk Space Avail:   171.88 GB / 465.02 GB (37.0%)
+===================================================
+=================== System Info ===================
+AutoGluon Version:  1.3.0
+Python Version:     3.10.1
+Operating System:   Windows
+Platform Machine:   AMD64
+Platform Version:   10.0.26100
+CPU Count:          32
+GPU Count:          0
+Memory Avail:       32.75 GB / 63.10 GB (51.9%)
+Disk Space Avail:   171.88 GB / 465.02 GB (37.0%)
+===================================================
+=================== System Info ===================
+AutoGluon Version:  1.3.0
+Python Version:     3.10.1
+Operating System:   Windows
+Platform Machine:   AMD64
+Platform Version:   10.0.26100
+CPU Count:          32
+GPU Count:          0
+Memory Avail:       32.75 GB / 63.10 GB (51.9%)
+Disk Space Avail:   171.88 GB / 465.02 GB (37.0%)
+===================================================
+Setting presets to: medium_quality
+Setting presets to: medium_quality
+Setting presets to: medium_quality
+Setting presets to: medium_quality
+Setting presets to: medium_quality
+
+Fitting with arguments:
+
+Fitting with arguments:
+
+Fitting with arguments:
+
+Fitting with arguments:
+
+Fitting with arguments:
+{'enable_ensemble': True,
+ 'eval_metric': MASE,
+ 'freq': 'h',
+ 'hyperparameters': {'Chronos': {'model_path': 'amazon/chronos-bolt-base'}},
+ 'known_covariates_names': [],
+ 'num_val_windows': 1,
+ 'prediction_length': 24,
+ 'quantile_levels': [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9],
+ 'random_seed': 123,
+ 'refit_every_n_windows': 1,
+ 'refit_full': False,
+ 'skip_model_selection': False,
+ 'target': 'target',
+ 'time_limit': 600,
+ 'verbosity': 2}
+
+{'enable_ensemble': True,
+ 'eval_metric': MASE,
+ 'freq': 'h',
+ 'hyperparameters': {'Chronos': {'model_path': 'amazon/chronos-bolt-base'}},
+ 'known_covariates_names': [],
+ 'num_val_windows': 1,
+ 'prediction_length': 24,
+ 'quantile_levels': [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9],
+ 'random_seed': 123,
+ 'refit_every_n_windows': 1,
+ 'refit_full': False,
+ 'skip_model_selection': False,
+ 'target': 'target',
+ 'time_limit': 600,
+ 'verbosity': 2}
+
+{'enable_ensemble': True,
+ 'eval_metric': MASE,
+ 'freq': 'h',
+ 'hyperparameters': {'Chronos': {'model_path': 'amazon/chronos-bolt-base'}},
+ 'known_covariates_names': [],
+ 'num_val_windows': 1,
+ 'prediction_length': 24,
+ 'quantile_levels': [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9],
+ 'random_seed': 123,
+ 'refit_every_n_windows': 1,
+ 'refit_full': False,
+ 'skip_model_selection': False,
+ 'target': 'target',
+ 'time_limit': 600,
+ 'verbosity': 2}
+
+{'enable_ensemble': True,
+ 'eval_metric': MASE,
+ 'freq': 'h',
+ 'hyperparameters': {'Chronos': {'model_path': 'amazon/chronos-bolt-base'}},
+ 'known_covariates_names': [],
+ 'num_val_windows': 1,
+ 'prediction_length': 24,
+ 'quantile_levels': [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9],
+ 'random_seed': 123,
+ 'refit_every_n_windows': 1,
+ 'refit_full': False,
+ 'skip_model_selection': False,
+ 'target': 'target',
+ 'time_limit': 600,
+ 'verbosity': 2}
+
+{'enable_ensemble': True,
+ 'eval_metric': MASE,
+ 'freq': 'h',
+ 'hyperparameters': {'Chronos': {'model_path': 'amazon/chronos-bolt-base'}},
+ 'known_covariates_names': [],
+ 'num_val_windows': 1,
+ 'prediction_length': 24,
+ 'quantile_levels': [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9],
+ 'random_seed': 123,
+ 'refit_every_n_windows': 1,
+ 'refit_full': False,
+ 'skip_model_selection': False,
+ 'target': 'target',
+ 'time_limit': 600,
+ 'verbosity': 2}
+
+train_data with frequency 'IRREG' has been resampled to frequency 'h'.
+train_data with frequency 'IRREG' has been resampled to frequency 'h'.
+train_data with frequency 'IRREG' has been resampled to frequency 'h'.
+train_data with frequency 'IRREG' has been resampled to frequency 'h'.
+train_data with frequency 'IRREG' has been resampled to frequency 'h'.
+Provided train_data has 13869 rows (NaN fraction=55.0%), 1 time series. Median time series length is 13869 (min=13869, max=13869). 
+Provided train_data has 13869 rows (NaN fraction=55.0%), 1 time series. Median time series length is 13869 (min=13869, max=13869). 
+Provided train_data has 13869 rows (NaN fraction=55.0%), 1 time series. Median time series length is 13869 (min=13869, max=13869). 
+Provided train_data has 13869 rows (NaN fraction=55.0%), 1 time series. Median time series length is 13869 (min=13869, max=13869). 
+Provided train_data has 13869 rows (NaN fraction=55.0%), 1 time series. Median time series length is 13869 (min=13869, max=13869). 
+
+Provided data contains following columns:
+
+Provided data contains following columns:
+
+Provided data contains following columns:
+
+Provided data contains following columns:
+
+Provided data contains following columns:
+	target: 'target'
+	target: 'target'
+	target: 'target'
+	target: 'target'
+	target: 'target'
+
+AutoGluon will gauge predictive performance using evaluation metric: 'MASE'
+
+AutoGluon will gauge predictive performance using evaluation metric: 'MASE'
+
+AutoGluon will gauge predictive performance using evaluation metric: 'MASE'
+
+AutoGluon will gauge predictive performance using evaluation metric: 'MASE'
+
+AutoGluon will gauge predictive performance using evaluation metric: 'MASE'
+	This metric's sign has been flipped to adhere to being higher_is_better. The metric score can be multiplied by -1 to get the metric value.
+	This metric's sign has been flipped to adhere to being higher_is_better. The metric score can be multiplied by -1 to get the metric value.
+	This metric's sign has been flipped to adhere to being higher_is_better. The metric score can be multiplied by -1 to get the metric value.
+	This metric's sign has been flipped to adhere to being higher_is_better. The metric score can be multiplied by -1 to get the metric value.
+	This metric's sign has been flipped to adhere to being higher_is_better. The metric score can be multiplied by -1 to get the metric value.
+===================================================
+===================================================
+===================================================
+===================================================
+===================================================
+
+Starting training. Start time is 2025-05-13 17:07:17
+
+Starting training. Start time is 2025-05-13 17:07:17
+
+Starting training. Start time is 2025-05-13 17:07:17
+
+Starting training. Start time is 2025-05-13 17:07:17
+
+Starting training. Start time is 2025-05-13 17:07:17
+Models that will be trained: ['Chronos[amazon__chronos-bolt-base]']
+Models that will be trained: ['Chronos[amazon__chronos-bolt-base]']
+Models that will be trained: ['Chronos[amazon__chronos-bolt-base]']
+Models that will be trained: ['Chronos[amazon__chronos-bolt-base]']
+Models that will be trained: ['Chronos[amazon__chronos-bolt-base]']
+Training timeseries model Chronos[amazon__chronos-bolt-base]. Training for up to 599.8s of the 599.8s of remaining time.
+Training timeseries model Chronos[amazon__chronos-bolt-base]. Training for up to 599.8s of the 599.8s of remaining time.
+Training timeseries model Chronos[amazon__chronos-bolt-base]. Training for up to 599.8s of the 599.8s of remaining time.
+Training timeseries model Chronos[amazon__chronos-bolt-base]. Training for up to 599.8s of the 599.8s of remaining time.
+Training timeseries model Chronos[amazon__chronos-bolt-base]. Training for up to 599.8s of the 599.8s of remaining time.
+	-0.6874       = Validation score (-MASE)
+	-0.6874       = Validation score (-MASE)
+	-0.6874       = Validation score (-MASE)
+	-0.6874       = Validation score (-MASE)
+	-0.6874       = Validation score (-MASE)
+	0.01    s     = Training runtime
+	0.01    s     = Training runtime
+	0.01    s     = Training runtime
+	0.01    s     = Training runtime
+	0.01    s     = Training runtime
+	2.79    s     = Validation (prediction) runtime
+	2.79    s     = Validation (prediction) runtime
+	2.79    s     = Validation (prediction) runtime
+	2.79    s     = Validation (prediction) runtime
+	2.79    s     = Validation (prediction) runtime
+Not fitting ensemble as only 1 model was trained.
+Not fitting ensemble as only 1 model was trained.
+Not fitting ensemble as only 1 model was trained.
+Not fitting ensemble as only 1 model was trained.
+Not fitting ensemble as only 1 model was trained.
+Training complete. Models trained: ['Chronos[amazon__chronos-bolt-base]']
+Training complete. Models trained: ['Chronos[amazon__chronos-bolt-base]']
+Training complete. Models trained: ['Chronos[amazon__chronos-bolt-base]']
+Training complete. Models trained: ['Chronos[amazon__chronos-bolt-base]']
+Training complete. Models trained: ['Chronos[amazon__chronos-bolt-base]']
+Total runtime: 2.81 s
+Total runtime: 2.81 s
+Total runtime: 2.81 s
+Total runtime: 2.81 s
+Total runtime: 2.81 s
+Best model: Chronos[amazon__chronos-bolt-base]
+Best model: Chronos[amazon__chronos-bolt-base]
+Best model: Chronos[amazon__chronos-bolt-base]
+Best model: Chronos[amazon__chronos-bolt-base]
+Best model: Chronos[amazon__chronos-bolt-base]
+Best model score: -0.6874
+Best model score: -0.6874
+Best model score: -0.6874
+Best model score: -0.6874
+Best model score: -0.6874
+data with frequency 'IRREG' has been resampled to frequency 'h'.
+data with frequency 'IRREG' has been resampled to frequency 'h'.
+data with frequency 'IRREG' has been resampled to frequency 'h'.
+data with frequency 'IRREG' has been resampled to frequency 'h'.
+data with frequency 'IRREG' has been resampled to frequency 'h'.
+data with frequency 'IRREG' has been resampled to frequency 'h'.
+data with frequency 'IRREG' has been resampled to frequency 'h'.
+data with frequency 'IRREG' has been resampled to frequency 'h'.
+data with frequency 'IRREG' has been resampled to frequency 'h'.
+data with frequency 'IRREG' has been resampled to frequency 'h'.
+Frequency '1H' stored as 'h'
+Beginning AutoGluon training... Time limit = 600s
+AutoGluon will save models to 'c:\Users\micha\code\finance\diploma\notebooks\autogluon-chronos-intc'
+=================== System Info ===================
+AutoGluon Version:  1.3.0
+Python Version:     3.10.1
+Operating System:   Windows
+Platform Machine:   AMD64
+Platform Version:   10.0.26100
+CPU Count:          32
+GPU Count:          0
+Memory Avail:       32.28 GB / 63.10 GB (51.1%)
+Disk Space Avail:   171.54 GB / 465.02 GB (36.9%)
+===================================================
+Setting presets to: medium_quality
+
+Fitting with arguments:
+{'enable_ensemble': True,
+ 'eval_metric': MASE,
+ 'freq': 'h',
+ 'hyperparameters': {'Chronos': {'model_path': 'amazon/chronos-bolt-base'}},
+ 'known_covariates_names': [],
+ 'num_val_windows': 1,
+ 'prediction_length': 128,
+ 'quantile_levels': [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9],
+ 'random_seed': 123,
+ 'refit_every_n_windows': 1,
+ 'refit_full': False,
+ 'skip_model_selection': False,
+ 'target': 'target',
+ 'time_limit': 600,
+ 'verbosity': 2}
+
+train_data with frequency 'IRREG' has been resampled to frequency 'h'.
+Provided train_data has 13869 rows (NaN fraction=55.0%), 1 time series. Median time series length is 13869 (min=13869, max=13869). 
+
+Provided data contains following columns:
+	target: 'target'
+
+AutoGluon will gauge predictive performance using evaluation metric: 'MASE'
+	This metric's sign has been flipped to adhere to being higher_is_better. The metric score can be multiplied by -1 to get the metric value.
+===================================================
+
+Starting training. Start time is 2025-05-13 17:53:23
+Models that will be trained: ['Chronos[amazon__chronos-bolt-base]']
+Training timeseries model Chronos[amazon__chronos-bolt-base]. Training for up to 599.8s of the 599.8s of remaining time.
+	-1.1913       = Validation score (-MASE)
+	0.20    s     = Training runtime
+	1.12    s     = Validation (prediction) runtime
+Not fitting ensemble as only 1 model was trained.
+Training complete. Models trained: ['Chronos[amazon__chronos-bolt-base]']
+Total runtime: 1.33 s
+Best model: Chronos[amazon__chronos-bolt-base]
+Best model score: -1.1913
+Warning: path already exists! This predictor may overwrite an existing predictor! path="autogluon-chronos-intc"
+Frequency '1H' stored as 'h'
+Frequency '1H' stored as 'h'
+Beginning AutoGluon training... Time limit = 600s
+Beginning AutoGluon training... Time limit = 600s
+AutoGluon will save models to 'c:\Users\micha\code\finance\diploma\notebooks\autogluon-chronos-intc'
+AutoGluon will save models to 'c:\Users\micha\code\finance\diploma\notebooks\autogluon-chronos-intc'
+=================== System Info ===================
+AutoGluon Version:  1.3.0
+Python Version:     3.10.1
+Operating System:   Windows
+Platform Machine:   AMD64
+Platform Version:   10.0.26100
+CPU Count:          32
+GPU Count:          0
+Memory Avail:       32.68 GB / 63.10 GB (51.8%)
+Disk Space Avail:   171.52 GB / 465.02 GB (36.9%)
+===================================================
+=================== System Info ===================
+AutoGluon Version:  1.3.0
+Python Version:     3.10.1
+Operating System:   Windows
+Platform Machine:   AMD64
+Platform Version:   10.0.26100
+CPU Count:          32
+GPU Count:          0
+Memory Avail:       32.68 GB / 63.10 GB (51.8%)
+Disk Space Avail:   171.52 GB / 465.02 GB (36.9%)
+===================================================
+Setting presets to: medium_quality
+Setting presets to: medium_quality
+
+Fitting with arguments:
+
+Fitting with arguments:
+{'enable_ensemble': True,
+ 'eval_metric': MASE,
+ 'freq': 'h',
+ 'hyperparameters': {'Chronos': {'model_path': 'amazon/chronos-bolt-base'}},
+ 'known_covariates_names': [],
+ 'num_val_windows': 1,
+ 'prediction_length': 128,
+ 'quantile_levels': [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9],
+ 'random_seed': 123,
+ 'refit_every_n_windows': 1,
+ 'refit_full': False,
+ 'skip_model_selection': False,
+ 'target': 'target',
+ 'time_limit': 600,
+ 'verbosity': 2}
+
+{'enable_ensemble': True,
+ 'eval_metric': MASE,
+ 'freq': 'h',
+ 'hyperparameters': {'Chronos': {'model_path': 'amazon/chronos-bolt-base'}},
+ 'known_covariates_names': [],
+ 'num_val_windows': 1,
+ 'prediction_length': 128,
+ 'quantile_levels': [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9],
+ 'random_seed': 123,
+ 'refit_every_n_windows': 1,
+ 'refit_full': False,
+ 'skip_model_selection': False,
+ 'target': 'target',
+ 'time_limit': 600,
+ 'verbosity': 2}
+
+train_data with frequency 'IRREG' has been resampled to frequency 'h'.
+train_data with frequency 'IRREG' has been resampled to frequency 'h'.
+Provided train_data has 13869 rows (NaN fraction=55.0%), 1 time series. Median time series length is 13869 (min=13869, max=13869). 
+Provided train_data has 13869 rows (NaN fraction=55.0%), 1 time series. Median time series length is 13869 (min=13869, max=13869). 
+
+Provided data contains following columns:
+
+Provided data contains following columns:
+	target: 'target'
+	target: 'target'
+
+AutoGluon will gauge predictive performance using evaluation metric: 'MASE'
+
+AutoGluon will gauge predictive performance using evaluation metric: 'MASE'
+	This metric's sign has been flipped to adhere to being higher_is_better. The metric score can be multiplied by -1 to get the metric value.
+	This metric's sign has been flipped to adhere to being higher_is_better. The metric score can be multiplied by -1 to get the metric value.
+===================================================
+===================================================
+
+Starting training. Start time is 2025-05-13 17:57:45
+
+Starting training. Start time is 2025-05-13 17:57:45
+Models that will be trained: ['Chronos[amazon__chronos-bolt-base]']
+Models that will be trained: ['Chronos[amazon__chronos-bolt-base]']
+Training timeseries model Chronos[amazon__chronos-bolt-base]. Training for up to 599.8s of the 599.8s of remaining time.
+Training timeseries model Chronos[amazon__chronos-bolt-base]. Training for up to 599.8s of the 599.8s of remaining time.
+	-1.1913       = Validation score (-MASE)
+	-1.1913       = Validation score (-MASE)
+	0.01    s     = Training runtime
+	0.01    s     = Training runtime
+	1.11    s     = Validation (prediction) runtime
+	1.11    s     = Validation (prediction) runtime
+Not fitting ensemble as only 1 model was trained.
+Not fitting ensemble as only 1 model was trained.
+Training complete. Models trained: ['Chronos[amazon__chronos-bolt-base]']
+Training complete. Models trained: ['Chronos[amazon__chronos-bolt-base]']
+Total runtime: 1.13 s
+Total runtime: 1.13 s
+Best model: Chronos[amazon__chronos-bolt-base]
+Best model: Chronos[amazon__chronos-bolt-base]
+Best model score: -1.1913
+Best model score: -1.1913
+data with frequency 'IRREG' has been resampled to frequency 'h'.
+data with frequency 'IRREG' has been resampled to frequency 'h'.
