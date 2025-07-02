@@ -1,56 +1,123 @@
-# DIPLOMSKA NALOGA: Napovedovanje gibanja finančnih trgov z modeli Chronos in TimesFM
+# 📈 DIPLOMSKA NALOGA: Napovedovanje gibanja finančnih trgov z modeli Chronos in TimesFM
 
-## Opis projekta
+[![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://python.org)
+[![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-orange.svg)](https://jupyter.org)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-Ta projekt primerja dva napredna modela za napovedovanje časovnih vrst – Amazon Chronos-Bolt in Google TimesFM – na zgodovinskih podatkih o cenah izbranih delnic. Analiza vključuje oceno uspešnosti modelov na različnih časovnih intervalih (5 minut, 15 minut, 1 ura) ter vizualizacijo in statistično obdelavo rezultatov.
+## 🎯 Opis projekta
 
-## Struktura projekta
+Ta projekt primerja dva napredna modela za napovedovanje časovnih vrst:
+- **Amazon Chronos-Bolt** 
+- **Google TimesFM**
 
-- `notebooks/`: Jupyter notebooki za pridobivanje podatkov, izvajanje napovedi in analizo rezultatov.
-- `src/`: Python skripte za obdelavo podatkov in generiranje vizualizacij.
-- `data/`: Shranjeni zgodovinski podatki o cenah delnic po intervalih.
-- `results/`: Napovedi posameznih modelov za vsako delnico in interval.
-- `analysis_results/`: Grafični prikazi in primerjave uspešnosti modelov.
-- `notes.md`: Povzetki, ugotovitve in priporočila na podlagi analize.
+Analiza temelji na zgodovinskih podatkih o cenah izbranih delnic in vključuje:
+- ✅ Oceno uspešnosti modelov na različnih časovnih intervalih (5min, 15min, 1h)
+- ✅ Vizualizacijo rezultatov
+- ✅ Statistično obdelavo in primerjavo
 
-## Uporabljeni podatki
+## 📁 Struktura projekta
 
-- Zgodovinski podatki za 11 izbranih delnic (npr. IONQ, NVDA, TSLA, VKTX ...), ki kotirajo ali na NASDAQ in NYSE.
-- Podatki so pridobljeni za intervale 5M, 15M in 1H.
-- Uporabljena je bila closing cena ('Close').
+```
+diploma/
+├── 📓 notebooks/          # Jupyter notebooki za analizo
+├── 🐍 src/               # Python skripte
+├── 📊 data/              # Zgodovinski podatki delnic
+│   ├── 5M/              # 5-minutni intervali
+│   ├── 15M/             # 15-minutni intervali
+│   └── 1H/              # 1-urni intervali
+├── 📈 results/           # Napovedi modelov
+├── 📋 analysis_results/  # Grafični prikazi in primerjave
+└── 📝 notes.md          # Povzetki in ugotovitve
+```
 
-## Uporabljeni modeli
+## 📊 Uporabljeni podatki
 
-### Chronos-Bolt
-- Transformer model za časovne vrste (Amazon).
-- Uporablja 512 preteklih vrednosti (context window) in napove naslednjih 128 točk.
-- Napovedi se izvajajo v drsečem oknu (rolling window).
+| Karakteristika | Opis |
+|---|---|
+| **Delnice** | 11 izbranih delnic (IONQ, NVDA, TSLA, VKTX, ...) |
+| **Borze** | NASDAQ in NYSE |
+| **Intervali** | 5M, 15M, 1H |
+| **Metrika** | Closing cena ('Close') |
+| **Obdobje** | Zgodovinski podatki |
 
-### TimesFM
-- Foundation model za časovne vrste (Google).
-- Uporablja 2048 (512) preteklih vrednosti in napove naslednjih 128 točk.
-- Prav tako uporablja drseče okno.
+## 🤖 Uporabljeni modeli
 
-## Analiza in vizualizacija
+### 🔥 Chronos-Bolt (Amazon)
+- **Tip**: Foundation model za časovne vrste (transformer)
+- **Context window**: 128 preteklih vrednosti → 20 napovedi
+- **Metoda**: Drseče okno (rolling window)
 
-- Izračunani so bili ključni metrični kazalniki: MAPE, MAE, RMSE, volatilnost napake, smerna pravilnost-natančnost.
-- Rezultati so vizualizirani v obliki histogramov, boxplotov, distribucij, in stolpčnih diagramov.
-- Statistični testi (t-test) za preverjanje pomembnosti razlik med modeli.
+### ⏰ TimesFM (Google)
+- **Tip**: Foundation model za časovne vrste  (transformer)
+- **Context window**: 2048 (128) preteklih vrednosti → 20 napovedi
+- **Metoda**: Drseče okno (rolling window)
 
-## Navodila za uporabo
+## 📈 Analiza in vizualizacija
 
-## Ključne ugotovitve
+### Metrični kazalniki
+- **MAPE** (Mean Absolute Percentage Error)
+- **MAE** (Mean Absolute Error) 
+- **RMSE** (Root Mean Square Error)
+- **Volatilnost napake**
+- **Smerna pravilnost/natančnost**
+- **Random Walk**
 
-- Model Chronos je v povprečju natančnejši (nižji MAPE) in bolj stabilen kot Chronos.
-- Najboljše rezultate dosegata oba modela na 5m in 15m intervalu.
-- Največje napake in volatilnost so pri napovedih na 1h intervalu.
-- Direkcionalna točnost je za oba modela podobna in presega naključno napovedovanje.
+### Vizualizacije
+- 📊 Histogrami
+- 📦 Boxploti
+- 📉 Distribucije
+- 📊 Stolpčni diagrami
 
-## Priporočila
+### Statistični testi
+- 🔬 T-test za preverjanje pomembnosti razlik med modeli
 
-- Za splošno uporabo priporočamo TimesFM na 5m-15m intervalu.
-- Za visoko-frekvenčno trgovanje so potrebne dodatne izboljšave modelov.
+## 🚀 Navodila za uporabo
+
+### Predpogoji
+```bash
+pip install -r requirements.txt
+```
+
+### Zagon analize
+1. **Pridobivanje podatkov**: `notebooks/Data_acquistion.ipynb`
+2. **Chronos napovedi**: `notebooks/chronos_predictions_5M_15M.ipynb`
+3. **TimesFM napovedi**: `notebooks/timesFM_model_5M_15M.ipynb`
+4. **Analiza rezultatov**: `src/analysis_scripts.py`
+
+## 🔍 Ključne ugotovitve
+
+> **Napaka v besedilu**: "Model Chronos je v povprečju natančnejši kot Chronos" → Verjetno mislite "Model TimesFM je natančnejši kot Chronos"
+
+### ✅ Glavne ugotovitve
+- **TimesFM** dosega v povprečju boljšo natančnost (nižji MAPE) in večjo stabilnost
+- **Optimalni intervali**: 5min in 15min za oba modela
+- **Problematični interval**: 1h (največje napake in volatilnost)
+- **Direkcionalna točnost**: Podobna za oba modela, presega naključno napovedovanje
+
+### 📊 Primerjava po intervalih
+| Interval | Chronos | TimesFM | Priporočilo |
+|----------|---------|---------|-------------|
+| 5min     | ✅ Dobro | ✅ Odlično | TimesFM |
+| 15min    | ✅ Dobro | ✅ Odlično | TimesFM |
+| 1h       | ⚠️ Slabše | ⚠️ Slabše | Potrebne izboljšave |
+
+## 💡 Priporočila
+
+### 🎯 Za praktično uporabo
+- **Splošno napovedovanje**: TimesFM na 5min-15min intervalih
+- **Kratkoročno trgovanje**: TimesFM z 5min intervalom
+- **Dolgoročna analiza**: Potrebne dodatne izboljšave za 1h interval
+
+### ⚠️ Omejitve
+- Modeli niso optimizirani za visoko-frekvenčno trgovanje
+- 1h interval zahteva dodaten fine-tuning
+- Potrebno je upoštevanje tržnih pogojev in volatilnosti
 
 ---
+
+## 📧 Kontakt
+
+**Avtor**: Michael Valand 
+**Leto**: 2025
 
 
